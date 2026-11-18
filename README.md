@@ -57,32 +57,80 @@ Compare the original, eroded, and dilated images.
 
 ## Program
 
+```
+# Image Erosion and Dilation using OpenCV
+
+# Step 1: Import Required Libraries
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Step 2: Create a Blank Image
+img = np.zeros((400, 600), dtype=np.uint8)
+
+# Step 3: Insert Text into the Image
+cv2.putText(img, 'IMAGE PROCESSING',
+            (60, 200),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            1.5,
+            255,
+            3)
+
+# Step 4: Display Original Image
+plt.figure(figsize=(6, 4))
+plt.imshow(img, cmap='gray')
+plt.title('Original Image')
+plt.axis('off')
+plt.show()
+
+# Step 5: Create Structuring Element (Kernel)
+kernel = np.ones((5, 5), np.uint8)
+
+# Step 6: Image Erosion
+erosion = cv2.erode(img, kernel, iterations=1)
+
+plt.figure(figsize=(6, 4))
+plt.imshow(erosion, cmap='gray')
+plt.title('Eroded Image')
+plt.axis('off')
+plt.show()
+
+# Step 7: Image Dilation
+dilation = cv2.dilate(img, kernel, iterations=1)
+
+plt.figure(figsize=(6, 4))
+plt.imshow(dilation, cmap='gray')
+plt.title('Dilated Image')
+plt.axis('off')
+plt.show()
+
+# Step 8: Compare All Three Images
+images = [img, erosion, dilation]
+
+titles = ['Original Image', 'Erosion', 'Dilation']
+
+plt.figure(figsize=(15, 5))
+
+for i in range(3):
+    plt.subplot(1, 3, i + 1)
+    plt.imshow(images[i], cmap='gray')
+    plt.title(titles[i])
+    plt.axis('off')
+
+plt.tight_layout()
+plt.show()
+```
+
 ## Developed By
 
-**Name:** ____________________________
+**Name:** Santhosh K
 
-**Register No:** ______________________
+**Register No:** 212225040379
 
 ## Output
 
-### Original Image
+<img width="1489" height="362" alt="image" src="https://github.com/user-attachments/assets/6b2f6c1c-9a33-4e69-a0a0-b18ffbeed1b9" />
 
-- A text image containing characters is displayed.
-- The image serves as the input for morphological processing.
-
-### Erosion
-
-- Original image is displayed.
-- Eroded image is displayed.
-- The thickness of the characters is reduced.
-- Object boundaries shrink inward.
-
-### Dilation
-
-- Original image is displayed.
-- Dilated image is displayed.
-- The thickness of the characters increases.
-- Object boundaries expand outward.
 
 ## Result
 
